@@ -1,0 +1,29 @@
+{
+  "name": "ts-node-project",
+  "version": "1.0.0",
+  "description": "A pipeline for building node-based applications in typescript",
+  "private": true,
+  "scripts": {
+    "start": "ts-node --project config/tsconfig.json src/index",
+    "test": "nyc --reporter=lcov --reporter=cobertura -e .ts -x \"src/*.spec.ts\" jasmine-ts \"src/**/*.spec.ts\"",
+    "test-bdd": "jasmine-ts --config=config/jasmine.json --project=config/tsconfig.json bdd/*.spec.ts",
+    "coverage": "http-server -p 8082 -o coverage",
+    "docker-build": "docker build -t app .",
+    "docker-run": "docker run -p 8080:8080 app"
+  },
+  "author": "Andrew Lowndes",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/jasmine": "^2.8.7",
+    "http-server": "^0.11.1",
+    "jasmine-spec-reporter": "^4.2.1",
+    "jasmine-ts": "^0.2.1",
+    "mockery": "^2.1.0",
+    "nyc": "^11.8.0",
+    "typescript": "^2.8.3"
+  },
+  "dependencies": {
+    "@types/node": "^10.1.4",
+    "ts-node": "^6.0.5"
+  }
+}
